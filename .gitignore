@@ -2,4 +2,6 @@ checkpoints/
 ckpts/
 datasets/
 results/
+.ipynb_checkpoints/
+__pycache__/
 Untitled*
