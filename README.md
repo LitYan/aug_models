@@ -61,7 +61,7 @@ python ./scripts/test.py --net unet --name 'model_real_5_mix_syn'\
 --epoch 'epoch_4_7200' --results_dir './results/' --gpu_ids 0
 ```
 Use `--results_dir` to specify the output directory. `--epoch` will specify the checkpoint to load.
-***
+
 * Our pretrained models
 
 Download the pth files of pretrained models from the [Google Drive](https://drive.google.com/drive/folders/1ZGARJIMT3nUw5pzw0ztD8Ql5OwS9aCW0?usp=sharing) or [BaiduNetdisk](https://pan.baidu.com/s/12I5YETYNTLCuhGsGR4205w)(access code:8mg7), save them in './ckpts/seg_models', and run
@@ -76,6 +76,7 @@ python ./scripts/test.py --net unet --name 'model_real_5_mix_syn'\
 ***
 ## How to generate a synthetic dataset 
 * Generating images Using Pretrained Models
+
 The synthetic images can be generated using pretrained models.
 Download the pth files of pretrained models from the [Google Drive](https://drive.google.com/drive/folders/152csoud9uHsxXEQNosucTPiWopFFAIFw?usp=sharing) or [BaiduNetdisk](https://pan.baidu.com/s/1jlx0aKRe4WA7JkbnQ8TMNg)(access code:m425), save them in './ckpts/aug_models', and run
 ```bash
