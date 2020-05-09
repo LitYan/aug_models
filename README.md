@@ -7,8 +7,8 @@ We use [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git) fo
 ## installation
 Clone this repo.
 ```bash
-git clone
-cd aug_models_pytorch
+git clone https://github.com/LitYan/aug_models.git
+cd aug_models
 ```
 This code requires PyTorch 1.1 and python 3+. Please install dependencies by
 ```bash
