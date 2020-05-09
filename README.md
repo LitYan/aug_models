@@ -1,7 +1,7 @@
 # Data augmentation in material microscopic image processing using style transfer
 
 <img src="./imgs/process.png" width="400" height="400" alt="data augmentation strategy"/><br>
-We use [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git) for image style transfer as augmentation network, have trained augmentation models with different ratio of polycrystalline iron data and generated corresponding synthetic datasets [Google Drive](https://drive.google.com/drive/folders/1gaYX4draApnFKRZi5NSA0ggbBNoMimFP?usp=sharing) or [BaiduNetdisk](https://pan.baidu.com/s/1tdCBcQprOh9gFZuuqcPcOw) (access code:rwjr).
+We use [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git) for image style transfer as augmentation network, have trained augmentation models with different ratio of polycrystalline iron data and generated corresponding synthetic datasets in [Google Drive](https://drive.google.com/drive/folders/1gaYX4draApnFKRZi5NSA0ggbBNoMimFP?usp=sharing) or [BaiduNetdisk](https://pan.baidu.com/s/1tdCBcQprOh9gFZuuqcPcOw) (access code:rwjr).
 
 # Get Started
 ## installation
