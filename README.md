@@ -17,11 +17,11 @@ pip install -r requirements.txt
 And you would need an NVIDIA machine with 4 GTX 1080Ti GPUs or 4 Telsa V100 GPUs.
 
 ## Download Datasets
-We used a iron crystal dataset. We have opened up the experimental datasets as needed. Please download them on the respective webpages. Due to the space limitation of Google Drive, we uploaded part of important data in Google Drive ,and uploaded all the data in BaiduNetdisk.
+We used a iron crystal dataset. We have opened up the experimental datasets as needed. Please download them on the respective webpages. we uploaded most of data in Google Drive due to the space limitation , and uploaded all the data in BaiduNetdisk.
 1. [Google Drive](https://drive.google.com/drive/folders/1DSePVowja0HyDmZ9g7Xlef4VW_YGqA_u?usp=sharing)
 2. [BaiduNetdisk](https://pan.baidu.com/s/1Kdi-6-lJKI3c7prLRqVYVw) (access code:5hsw)
 
-**Preparing iron crystal Dataset**. In particular, you will need to download **real_data** folder and **synthetic_data** folder.The real images and labels have already been divided into train, val and test set. And the synthctic images and labels should be placed in the train set. To do this, save them in './datasets', and run
+**Preparing iron crystal Dataset**. In particular, you will need to download **real_data** folder and **synthetic_data** folder. The real images and labels have already been divided into train, val and test set. In addition，the synthctic images and labels should be placed in the train set. To do this, save them in './datasets', and run
 ```bash
 cd datasets
 mv real_data/* ./
@@ -32,7 +32,7 @@ cd ../
 ```
 ## Applying in Image segmentations
 
-Once the dataset is ready, you can apply these synthetic data in image segmentation tasks as data augmentation for real data like we did in [examples.ipynb](./examples.ipynb).
+Once the dataset is ready, these synthetic data can be applied in image segmentation tasks as data augmentation for real data like we did in [examples.ipynb](./examples.ipynb).
 
 * train, for example.
 ```bash
@@ -92,7 +92,6 @@ python ./scripts/train_pix2pix.py   --name iron_label2real_pix2pix_real_5 \
 --record_txt './datasets/train/records_txt/real_5.txt' \
 --display_env 'real_5'
 ```
-
 # Code Structure
 - `scripts/train.py`, `scripts/test.py`: the entry point of training and testing for image segmentation.
 - `scripts/train_pix2pix.py`, `scripts/generate_samples.py`: the entry point of training and testing for image style transfer.
