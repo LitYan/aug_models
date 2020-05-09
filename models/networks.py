@@ -51,6 +51,8 @@ def init_weights(net, init_type='normal', gain=0.02):
         if hasattr(m, 'weight') and (classname.find('Conv') != -1 or classname.find('Linear') != -1):
             if init_type == 'normal':
                 init.normal_(m.weight.data, 0.0, gain)
+                if hasattr(m, 'bias') and m.bias is not None:
+                    init.constant_(m.bias.data, 0.0)
             elif init_type == 'xavier_uniform':
                 init.xavier_uniform_(m.weight.data, gain=gain)
             elif init_type == 'xavier':
@@ -61,11 +63,10 @@ def init_weights(net, init_type='normal', gain=0.02):
                 init.orthogonal_(m.weight.data, gain=gain)
             else:
                 raise NotImplementedError('initialization method [%s] is not implemented' % init_type)
-#             if hasattr(m, 'bias') and m.bias is not None:
-#                 init.constant_(m.bias.data, 0.0)
-#         elif classname.find('BatchNorm2d') != -1:
-#             init.normal_(m.weight.data, 1.0, gain)
-#             init.constant_(m.bias.data, 0.0)
+        elif classname.find('BatchNorm2d') != -1:
+            if init_type == 'normal':
+                init.normal_(m.weight.data, 1.0, gain)
+                init.constant_(m.bias.data, 0.0)
 
     print('initialize network with %s' % init_type)
     net.apply(init_func)
@@ -73,7 +74,7 @@ def init_weights(net, init_type='normal', gain=0.02):
 
 def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
     if len(gpu_ids) > 0:
-        assert(torch.cuda.is_available())
+        assert(torch.cuda.is_available()),'no available gpu devices'
         net.to(gpu_ids[0])
         net = torch.nn.DataParallel(net, gpu_ids)
     if init_type is not None:
@@ -267,7 +268,7 @@ class UnetGenerator(nn.Module):
         # construct unet structure
         unet_block = SkipConnectionBlock(ngf * 8, ngf * 8, input_nc=None, submodule=None, norm_layer=norm_layer, innermost=True)
         for i in range(num_downs - 5):
-            unet_block = UnetSkipConnectionBlock(ngf * 8, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
+            unet_block = SkipConnectionBlock(ngf * 8, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
         unet_block = SkipConnectionBlock(ngf * 4, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
         unet_block = SkipConnectionBlock(ngf * 2, ngf * 4, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
         unet_block = SkipConnectionBlock(ngf, ngf * 2, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
@@ -416,7 +417,7 @@ class Unet(nn.Module):
         #unet structure
         #innermost
         unet_block=UnetSkipConnectionBlock(num_feat[3],num_feat[4],innermost=True)
-        #
+        
         unet_block=UnetSkipConnectionBlock(num_feat[2],num_feat[3],submodule=unet_block)
         unet_block=UnetSkipConnectionBlock(num_feat[1],num_feat[2],submodule=unet_block)
         unet_block=UnetSkipConnectionBlock(num_feat[0],num_feat[1],submodule=unet_block)

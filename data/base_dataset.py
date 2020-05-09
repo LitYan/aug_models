@@ -35,8 +35,7 @@ def get_params(opt, size):
     y = random.randint(0, np.maximum(0, new_h - opt.fineSize))
     
     v_flip = random.random() < 0.5
-    h_flip = random.random() < 0.5
-    return {'crop_pos': (x, y), 'v_flip': v_flip,'h_flip': h_flip}
+    return {'crop_pos': (x, y), 'v_flip': v_flip}
 
 def get_transform(opt, params, method=Image.BICUBIC,normalize=True):
     transform_list = []
@@ -54,7 +53,6 @@ def get_transform(opt, params, method=Image.BICUBIC,normalize=True):
 
     if opt.isTrain and not opt.no_flip:
         transform_list.append(transforms.Lambda(lambda img: __v_flip(img, params['v_flip'])))
-        transform_list.append(transforms.Lambda(lambda img: __h_flip(img, params['h_flip'])))
         
     transform_list += [transforms.ToTensor()]
     if normalize:

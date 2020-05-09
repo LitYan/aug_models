@@ -106,8 +106,6 @@ class BaseOptions():
         if len(opt.gpu_ids)>0:
             torch.cuda.set_device(opt.gpu_ids[0])
             
-#         if self.isTrain:
-#             opt.no_eval = opt.train_type=='mix'
         self.opt = opt 
         self.print_options(opt)
         return opt
