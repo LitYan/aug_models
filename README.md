@@ -1,4 +1,4 @@
-# Data augmentation in material microscopic image processing using style transfer
+# Data augmentation in microscopic images for material data mining
 
 <img src="./imgs/process.png" width="400" height="400" alt="data augmentation strategy"/><br>
 We use [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git) for image style transfer as augmentation network, have trained augmentation models with different ratio of polycrystalline iron data and generated corresponding synthetic datasets in [Google Drive](https://drive.google.com/drive/folders/1gaYX4draApnFKRZi5NSA0ggbBNoMimFP?usp=sharing) or [BaiduNetdisk](https://pan.baidu.com/s/1tdCBcQprOh9gFZuuqcPcOw) (access code:rwjr).
@@ -105,3 +105,11 @@ python ./scripts/train_pix2pix.py   --name iron_label2real_pix2pix_real_5 \
 - `data/`: defines the class for loading images and label maps.
 
 This code structure borrows heavily from [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix.git)
+
+# Citation
+If you use it successfully for your research please be so kind to cite the [paper](https://www.nature.com/articles/s41524-020-00392-6#citeas).
+
+Ma, B., Wei, X., Liu, C. et al. Data augmentation in microscopic images for material data mining. npj Comput Mater 6, 125 (2020). https://doi.org/10.1038/s41524-020-00392-6
+
+# Acknowledgement
+The authors acknowledge the financial support from the National Key Research and Development Program of China (No. 2016YFB0700500).
