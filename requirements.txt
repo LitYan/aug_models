@@ -3,7 +3,7 @@ numpy==1.16.2
 matplotlib==3.0.3
 torchvision==0.3.0
 torch==1.1.0
-Pillow==7.1.2
+Pillow==9.0.1
 gala==0.4.2
 skimage==0.0
 visdom==0.1.8.9
